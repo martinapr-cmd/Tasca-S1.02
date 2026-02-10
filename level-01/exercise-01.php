@@ -2,9 +2,7 @@
 
 /*  Defineix una variable de cada tipus: integer, double, string i boolean. 
   Imprimeix-les per pantalla/terminal.
-
- Després crea una constant que inclogui el teu nom i mostra-ho en format títol
-  per pantalla o imprimeix-la per terminal. */
+*/
 
 $integer = 5;
 echo "$integer\n";
@@ -23,7 +21,12 @@ $boolean = true;
 echo "$boolean\n"; 
 var_dump($boolean);
 
+/*
+ Després crea una constant que inclogui el teu nom i mostra-ho en format títol
+ per pantalla o imprimeix-la per terminal. 
+*/
 
-
+define("MY_NAME", "My name is Martina Pou!");
+echo "<h1>" . MY_NAME . "</h1>"; 
 
  ?>
