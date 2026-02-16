@@ -9,7 +9,7 @@ Consell: pot ser que la funció rand () et resulti útil.
 
 echo "Charlie bit my finger! But was it true?\n";
 
-function isBitten() {
+function isBitten(): bool {
     $randomNumber = rand(0, 1); // generates either 0 or 1. 
     return $randomNumber === 1; // === will tell if randomNumber exactly equals to 1! 
 }

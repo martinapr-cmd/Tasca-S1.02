@@ -10,17 +10,22 @@ i costa 5 cèntims.
 
 */
 
-function totalCost($minutes, $baseCost = 10, $stepCost = 5) {
-    if ($minutes < 3) {
+function totalCost(int $minutes, int $baseCost = 10, int $stepCost = 5): int {
+
+    $includedMinutes = 3; // the first 3 minutes are included in the base cost, set variable to avoid magic number!!!
+    
+    if ($minutes < $includedMinutes) {
        return $baseCost;
     } else {
-        $extraMinutes = $minutes - 3; //substract 3, just to count the extra minutes
-        $totalCost = $baseCost + ($extraMinutes * $stepCost); //total = 10(base) + (extra minutes * 5(each minute))
-        return $totalCost;
+        $extraMinutes = $minutes - $includedMinutes; //substract 3, just to count the extra minutes
+        return $baseCost + ($extraMinutes * $stepCost);
     }
 }
 
 $total = totalCost(4);
 echo "Full price of the call: " . $total . " cents\n";
+
+
+
 
 ?>

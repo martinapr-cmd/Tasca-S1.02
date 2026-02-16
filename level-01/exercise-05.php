@@ -13,7 +13,7 @@ Condicions:
 */
 
 
-function verifyGrade($grade) { 
+function verifyGrade(int $grade): string { 
     if ($grade >= 60) { 
         return "Primera Divisió"; 
     } elseif ($grade >= 45) { 

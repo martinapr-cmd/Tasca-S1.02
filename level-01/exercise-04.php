@@ -7,7 +7,7 @@ A més, aquesta funció ha de tenir un segon paràmetre que indiqui de quant a q
 El compte s’ha de mostrar per pantalla pas per pas.
 */
 
-function counting($start = 1, $max = 10, $step = 1) {
+function counting(int $start = 1, int $max = 10, int $step = 1): void {
     for ($i = $start; $i <= $max; $i += $step) {
         echo $i . "\n";
     }

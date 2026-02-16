@@ -13,37 +13,50 @@ de 8000 i "Professional" la resta.
 Pensa a fer més d'una funció per resoldre aquest problema.
 */
 
-function sumScores($score1, $score2, $score3) {
-    return $score1 + $score2 + $score3;
+
+// Constants (no magic numbers)
+define('NUM_SCORES', 3);
+define('BEGINNER_THRESHOLD', 4000);
+define('INTERMEDIATE_THRESHOLD', 8000);
+define('MIN_SCORE', 0);
+define('MAX_SCORE', 9999);
+
+//we make the scores an array!
+function sumScores(array $scores): int {
+    return array_sum($scores);
 }
 
-function averageScore($score1, $score2, $score3) {
-    return ($score1 + $score2 + $score3) / 3;
+function averageScore(array $scores): float {
+    return array_sum($scores) / NUM_SCORES;
 }
 
-function classifyScore($averageScore) {
-    if ($averageScore < 4000) {
+function classifyScore(float $averageScore) {
+    if ($averageScore < BEGINNER_THRESHOLD) {
         return "Principiant";
-    } elseif ($averageScore < 8000) {
+    } elseif ($averageScore < INTERMEDIATE_THRESHOLD) {
         return "Intermedi";
     } else {
         return "Professional";
     }
 }
 
-$score1 = rand(0, 9999);
-$score2 = rand(0, 9999);
-$score3 = rand(0, 9999);
-echo "Scores: $score1, $score2, $score3\n";
+// Generate scores
+$scores = [
+    rand(MIN_SCORE, MAX_SCORE),
+    rand(MIN_SCORE, MAX_SCORE),
+    rand(MIN_SCORE, MAX_SCORE)
+];
 
-$totalScore = sumScores($score1, $score2, $score3);
-$average = averageScore($score1, $score2, $score3);
-$clasification = classifyScore($average);
+// implode() takes an array and turns it into a string, you choose what goes in between the elements.
+echo "Scores: " . implode(", ", $scores) . "\n";
 
-echo "Sum of scores: " . $totalScore . "\n";
-echo "Average score: " . $average . "\n";
-echo "Classification: " . $clasification . "\n";
+$totalScore = sumScores($scores);
+$average = averageScore($scores);
+$classification = classifyScore($average); // we take the $average and pass it to the classifyScore function. 
 
+echo "Sum of scores: $totalScore\n";
+echo "Average score: $average\n";
+echo "Classification: $classification\n";
 
 
 ?>
