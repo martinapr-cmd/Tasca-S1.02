@@ -9,22 +9,21 @@ telefònica segons les següents premisses:
 i costa 5 cèntims.
 
 */
+Define('MINUTES_INCLUDED', 3);
+Define('BASE_COST', 10);
+Define('STEP_COST', 5);
 
-function totalCost(int $minutes, int $baseCost = 10, int $stepCost = 5): int {
-
-    $includedMinutes = 3; // the first 3 minutes are included in the base cost, set variable to avoid magic number!!!
-    
-    if ($minutes < $includedMinutes) {
-       return $baseCost;
+function totalCost($minutes) {
+    if ($minutes <= MINUTES_INCLUDED) {
+        return BASE_COST;
     } else {
-        $extraMinutes = $minutes - $includedMinutes; //substract 3, just to count the extra minutes
-        return $baseCost + ($extraMinutes * $stepCost);
+        $additionalMinutes = $minutes - MINUTES_INCLUDED;
+        return BASE_COST + ($additionalMinutes * STEP_COST);
     }
 }
 
 $total = totalCost(4);
 echo "Full price of the call: " . $total . " cents\n";
-
 
 
 

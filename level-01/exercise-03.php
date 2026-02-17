@@ -53,36 +53,30 @@ i en un tercer paràmetre que indiqui una operació aritmética(suma,resta,multi
 Pensa en tots els casos possibles que ha de tenir aquest programa abans de fer-lo!
 */
 
-$a = 0;
-$b = 90;
-$operation = "divisio";
-
-switch($operation) {
-    case "suma": 
-        echo "suma: " . ($a + $b) . "\n";
-        break;
-    case "resta":
-        echo "resta: " . ($a - $b) . "\n";
-        break;
-    case "multiplicacio": 
-        echo "multiplicació: " . ($a * $b) . "\n";
-        break;
-    case "divisio":
-        if ($b == 0 || $a == 0) {
-            echo "Error, no es pot dividir per zero\n";
-            break;
-        }
-        echo "divisió: " . ($a / $b) . "\n";
-        break;
-    default:
-        echo "Operació no vàlida";
+function calculator(int $num1, int $num2, string $operation): float|string {
+    switch(strtolower($operation)) { 
+        case 'suma':
+            return $num1 + $num2;
+        case 'resta':
+            return $num1 - $num2;
+        case 'multiplicació':
+            return $num1 * $num2;
+        case 'divisió':
+            if ($num2 == 0) {
+                return "No es pot dividir per zero.";
+            }
+            return $num1 / $num2;
+        default:
+            return "Operador invalid.";
+    }
 
 }
 
-
-
-
-
-
+echo calculator(10, 5, 'suma') . "\n"; 
+echo calculator(10, 5, 'resta') . "\n";
+echo calculator(10, 5, 'multiplicació') . "\n";
+echo calculator(10, 5, 'divisió') . "\n";
+echo calculator(10, 0, 'divisió') . "\n";
+echo calculator(10, 5, 'hola') . "\n"; 
 
 ?>
